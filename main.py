@@ -30,7 +30,7 @@ menu_actions = {
     CREATE_DIR: lib.create_dir,
     DELETE_FILE_DIR: lib.del_file_or_dir,
     COPY_FILE_DIR: lib.copy_file_or_dir,
-    SHOW_CURRENT_DIR: lib.find_all_in_current_dir,
+    SHOW_CURRENT_DIR: lib.find_in_current_dir,
     SHOW_FILES_IN_CURRENT_DIR: lib.get_dir_in_current_dir,
     SHOW_DIRS_IN_CURRENT_DIR: lib.get_files_in_current_dir,
     SHOW_SYSTEM_INFO: lib.get_system_info,

@@ -98,10 +98,40 @@ def copy_file_or_dir():
                 print(f'ОШИБКА. Сообщение: {e.strerror}')
 
 
+def find_in_current_dir():
+    #folders = []
+    str_files = ""
+    str_dirs = ""
+    print("Список директорий и файлов в текущем каталоге:")
+    for item in os.listdir("."):
+        if (os.path.isfile(item)):
+            if len(str_files) == 0:
+                str_files += ("files: " + item)
+            else:
+                str_files += (", " + item)
+        else:
+            if len(str_dirs) == 0:
+                str_dirs += ("dirs: " + item)
+            else:
+                str_dirs += (", " + item)
+    # Вывод на экран
+    print(str_files)
+    print(str_dirs)
+
+    answer = input('Вы хотите сохранить содержимое рабочей директории в файл? (Да/Нет): ')
+    while not answer.upper() in ["ДА", "НЕТ"]:
+        answer = input('Повторите Ваш ответ. Вы хотите сохранить содержимое рабочей директории в файл? (Да/Нет): ')
+    if answer.upper() == "ДА":
+        with open('listdir.txt', 'w', encoding='utf-8') as f:
+            f.write(str_files + "\n")
+            f.write(str_dirs + "\n")
+
+
 def find_all_in_current_dir():
     folders = []
     print("Список директорий и файлов в текущем каталоге (с вложенными файлами/каталогами):")
-    for item in os.walk(os.getcwd()):
+    file_dir = os.listdir(".")
+    for item in file_dir:
         folders.append(item)
 
     for address, dirs, files in folders:

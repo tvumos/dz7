@@ -1,0 +1,2 @@
+files: bill.json, main.py, README.md
+dirs: .git, .idea, module, test, venv
