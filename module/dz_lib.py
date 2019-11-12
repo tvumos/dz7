@@ -98,8 +98,17 @@ def copy_file_or_dir():
                 print(f'ОШИБКА. Сообщение: {e.strerror}')
 
 
-def find_in_current_dir():
-    #folders = []
+def questions_save_listdir_in_file():
+    answer = input('Вы хотите сохранить содержимое рабочей директории в файл? (Да/Нет): ')
+    while not answer.upper() in ["ДА", "НЕТ"]:
+        answer = input('Повторите Ваш ответ. Вы хотите сохранить содержимое рабочей директории в файл? (Да/Нет): ')
+    if answer.upper() == "ДА":
+        find_in_current_dir(True)
+    else:
+        find_in_current_dir(False)
+
+
+def find_in_current_dir(save_file):
     str_files = ""
     str_dirs = ""
     print("Список директорий и файлов в текущем каталоге:")
@@ -117,11 +126,8 @@ def find_in_current_dir():
     # Вывод на экран
     print(str_files)
     print(str_dirs)
-
-    answer = input('Вы хотите сохранить содержимое рабочей директории в файл? (Да/Нет): ')
-    while not answer.upper() in ["ДА", "НЕТ"]:
-        answer = input('Повторите Ваш ответ. Вы хотите сохранить содержимое рабочей директории в файл? (Да/Нет): ')
-    if answer.upper() == "ДА":
+    # Сохранение в файл
+    if (save_file == True):
         with open('listdir.txt', 'w', encoding='utf-8') as f:
             f.write(str_files + "\n")
             f.write(str_dirs + "\n")

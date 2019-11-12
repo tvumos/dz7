@@ -1,4 +1,4 @@
-import  os
+import os
 import module.dz_lib as lib
 
 def test_show_separator():

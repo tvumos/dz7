@@ -2,11 +2,9 @@
 Домашнее задание № 6 - Трясцын Владимир
 """
 
-from module.bill import my_bill_run
 import module.dz_lib as lib
-import module.victory as game_victory
-#import module.bill as game_bill
-
+from module.bill import my_bill_run
+from module.victory import victory_run
 
 
 CREATE_DIR = "Создать папку"
@@ -23,27 +21,24 @@ CHANGE_CURRENT_DIR = "Смена рабочей директории"
 EXIT_PROGRAM = "Выход"
 
 
-
-
 menu_actions = {
     EXIT_PROGRAM: lib.exit_program,
     CREATE_DIR: lib.create_dir,
     DELETE_FILE_DIR: lib.del_file_or_dir,
     COPY_FILE_DIR: lib.copy_file_or_dir,
-    SHOW_CURRENT_DIR: lib.find_in_current_dir,
+    SHOW_CURRENT_DIR: lib.questions_save_listdir_in_file,
     SHOW_FILES_IN_CURRENT_DIR: lib.get_dir_in_current_dir,
     SHOW_DIRS_IN_CURRENT_DIR: lib.get_files_in_current_dir,
     SHOW_SYSTEM_INFO: lib.get_system_info,
     SHOW_AUTHOR: lib.show_author,
-    GAME_VICTORY: game_victory.victory_run,
+    GAME_VICTORY: victory_run,
     GAME_BILL: my_bill_run,
     CHANGE_CURRENT_DIR: lib.change_current_dir
 }
 
 
 def is_correct_input(choice):
-    return choice.isdigit() and int(choice) >=0 and int(choice) < len(menu_actions)
-
+    return choice.isdigit() and 0 <= int(choice) < len(menu_actions)
 
 
 # Меню программы
